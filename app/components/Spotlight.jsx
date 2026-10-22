@@ -1,0 +1,10 @@
+'use client'
+
+export default function Spotlight({ children }) {
+  function move(e) {
+    const r = e.currentTarget.getBoundingClientRect()
+    e.currentTarget.style.setProperty('--mx', `${e.clientX - r.left}px`)
+    e.currentTarget.style.setProperty('--my', `${e.clientY - r.top}px`)
+  }
+  return <section className="hero" onPointerMove={move}>{children}</section>
+}
