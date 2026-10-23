@@ -11,7 +11,8 @@ export default function CopyButton({ text }) {
     } catch {}
   }
   return (
-    <button type="button" className="copy" onClick={copy} aria-live="polite">
+    <button type="button" onClick={copy} aria-live="polite"
+      className="rounded-md bg-white/10 px-2.5 py-1 text-xs text-white transition hover:bg-[#00D68F] hover:text-[#011d14] active:scale-95">
       {done ? 'Tersalin' : 'Salin'}
     </button>
   )

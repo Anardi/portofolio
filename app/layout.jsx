@@ -1,24 +1,31 @@
-import { IBM_Plex_Sans, IBM_Plex_Mono } from 'next/font/google'
+import { Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
+import '@xterm/xterm/css/xterm.css'
+import Providers from './components/Providers'
 import Header from './components/Header'
+import Backdrop from './components/Backdrop'
+import CursorFX from './components/CursorFX'
 
-const sans = IBM_Plex_Sans({ subsets: ['latin'], weight: ['400', '500', '600'], variable: '--sans' })
-const mono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--mono' })
+const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-jakarta' })
+const jetbrains = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains' })
 
 export const metadata = {
-  title: 'Linux System Administration Lab',
-  description: 'Dokumentasi lab Ubuntu Server di VirtualBox: 12 modul simulasi tugas administrator untuk IT Support.',
+  title: 'Bagas Anardi · IT Infrastructure & Linux SysAdmin Lab',
+  description: 'Portofolio IT Support dan Linux System Administration dengan modul lab Ubuntu, networking, troubleshooting, dan terminal simulasi browser.',
 }
-
-const themeScript = `try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t}catch(e){}`
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="id" className={`${sans.variable} ${mono.variable}`} suppressHydrationWarning>
-      <head><script dangerouslySetInnerHTML={{ __html: themeScript }} /></head>
-      <body>
-        <Header />
-        {children}
+    <html lang="id" suppressHydrationWarning className={`${jakarta.variable} ${jetbrains.variable}`}>
+      <body className="bg-[#F8FAFC] font-sans text-slate-900 antialiased transition-colors duration-300 dark:bg-[#050807] dark:text-slate-100">
+        <Providers>
+          <div className="relative isolate min-h-screen">
+            <Backdrop />
+            <CursorFX />
+            <Header />
+            {children}
+          </div>
+        </Providers>
       </body>
     </html>
   )

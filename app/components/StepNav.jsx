@@ -22,11 +22,14 @@ export default function StepNav({ titles }) {
 
   return (
     <>
-      <div className="bar" ref={bar} aria-hidden="true" />
-      <nav className="side" aria-label="Langkah dalam modul">
-        <ol>
+      <div ref={bar} aria-hidden="true" className="fixed left-0 top-0 z-50 h-[3px] w-0 bg-[#00D68F] shadow-[0_0_10px_#00D68F]" />
+      <nav aria-label="Langkah dalam modul" className="sticky top-24 hidden max-h-[calc(100vh-7rem)] self-start overflow-auto text-sm lg:block">
+        <ol className="border-l-2 border-slate-200 dark:border-white/10">
           {titles.map((t, i) => (
-            <li key={i}><a href={`#step-${i}`} aria-current={i === active ? 'step' : undefined}>{t}</a></li>
+            <li key={i}>
+              <a href={`#step-${i}`} aria-current={i === active ? 'step' : undefined}
+                className="-ml-0.5 block border-l-2 border-transparent py-1.5 pl-3 text-slate-500 transition hover:text-slate-900 aria-[current=step]:border-[#00D68F] aria-[current=step]:font-medium aria-[current=step]:text-slate-900 dark:text-slate-400 dark:hover:text-white dark:aria-[current=step]:text-white">{t}</a>
+            </li>
           ))}
         </ol>
       </nav>

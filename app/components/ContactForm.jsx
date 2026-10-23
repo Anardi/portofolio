@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import { btnPri, field } from '../ui'
 
 const endpoint = process.env.NEXT_PUBLIC_FORM_ENDPOINT
 
@@ -8,7 +9,8 @@ export default function ContactForm({ to }) {
 
   async function onSubmit(e) {
     e.preventDefault()
-    const f = new FormData(e.currentTarget)
+    const form = e.currentTarget
+    const f = new FormData(form)
     if (f.get('website')) return // honeypot untuk bot
     const data = { name: f.get('name'), email: f.get('email'), message: f.get('message') }
 
@@ -20,7 +22,6 @@ export default function ContactForm({ to }) {
       setState('mailto')
       return
     }
-
     setState('sending')
     try {
       const res = await fetch(endpoint, {
@@ -28,7 +29,7 @@ export default function ContactForm({ to }) {
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(data),
       })
-      if (res.ok) { e.currentTarget.reset(); setState('sent') } else setState('error')
+      if (res.ok) { form.reset(); setState('sent') } else setState('error')
     } catch { setState('error') }
   }
 
@@ -39,25 +40,17 @@ export default function ContactForm({ to }) {
     noconfig: ['err', 'Tujuan pesan belum diatur. Isi email di data/lab.js atau NEXT_PUBLIC_FORM_ENDPOINT.'],
   }[state]
 
+  const lbl = 'mb-1.5 block text-sm font-medium'
   return (
-    <form onSubmit={onSubmit} className="cform">
-      <div className="field">
-        <label htmlFor="name">Nama</label>
-        <input id="name" name="name" required autoComplete="name" />
-      </div>
-      <div className="field">
-        <label htmlFor="email">Email</label>
-        <input id="email" name="email" type="email" required autoComplete="email" />
-      </div>
-      <div className="field">
-        <label htmlFor="message">Pesan</label>
-        <textarea id="message" name="message" rows={6} required />
-      </div>
-      <input className="hp" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" />
-      <button type="submit" className="btn pri" disabled={state === 'sending'}>
-        {state === 'sending' ? 'Mengirim…' : 'Kirim pesan'}
-      </button>
-      {msg && <p className={`status ${msg[0]}`} role="status">{msg[1]}</p>}
+    <form onSubmit={onSubmit} className="relative space-y-4 rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-[6px_6px_18px_#dfe5ec,-6px_-6px_18px_#ffffff] backdrop-blur-md dark:border-white/10 dark:bg-[#0B120F]/80 dark:shadow-[6px_6px_18px_rgba(0,0,0,.4)]">
+      <div><label htmlFor="name" className={lbl}>Nama</label><input id="name" name="name" required autoComplete="name" className={field} /></div>
+      <div><label htmlFor="email" className={lbl}>Email</label><input id="email" name="email" type="email" required autoComplete="email" className={field} /></div>
+      <div><label htmlFor="message" className={lbl}>Pesan</label><textarea id="message" name="message" rows={6} required className={`${field} resize-y`} /></div>
+      <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px] h-px w-px" />
+      <button type="submit" className={btnPri} disabled={state === 'sending'}>{state === 'sending' ? 'Mengirim…' : 'Kirim pesan'}</button>
+      {msg && (
+        <p role="status" className={`rounded-r-lg border-l-4 px-3 py-2 text-sm ${msg[0] === 'ok' ? 'border-emerald-500 bg-emerald-500/10' : 'border-red-500 bg-red-500/10'}`}>{msg[1]}</p>
+      )}
     </form>
   )
 }

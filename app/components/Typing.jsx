@@ -33,13 +33,18 @@ export default function Typing() {
   }, [])
 
   return (
-    <div className="term" role="img" aria-label="Contoh sesi terminal: nginx gagal karena konfigurasi salah, lalu diperbaiki">
-      <div className="term-bar"><i /><i /><i /><span className="term-title">ubuntu-lab · 2 CPU · 2 GB RAM · 20 GB</span><span className="live">running</span></div>
-      <pre aria-hidden="true">
+    <div role="img" aria-label="Contoh sesi terminal: nginx gagal karena konfigurasi salah, lalu diperbaiki" style={{ '--d': '350ms' }}
+      className="rise overflow-hidden rounded-xl border border-[#00D68F]/30 bg-[#07100c]/90 shadow-[0_0_60px_-15px_rgba(0,214,143,.55)] backdrop-blur">
+      <div className="flex items-center gap-1.5 border-b border-white/10 px-3 py-2.5">
+        <i className="h-2.5 w-2.5 rounded-full bg-[#00D68F]" /><i className="h-2.5 w-2.5 rounded-full bg-white/20" /><i className="h-2.5 w-2.5 rounded-full bg-white/20" />
+        <span className="ml-2 min-w-0 flex-1 truncate font-mono text-xs text-slate-400">ubuntu-lab · 2 CPU · 2 GB RAM · 20 GB</span>
+        <span className="flex items-center gap-1.5 font-mono text-xs text-emerald-400"><span className="pulse-dot h-1.5 w-1.5 rounded-full bg-emerald-400" />running</span>
+      </div>
+      <pre aria-hidden="true" className="min-h-[15.5rem] overflow-x-auto whitespace-pre-wrap p-4 font-mono text-[13px] leading-relaxed text-slate-100">
         {done.map((s, i) => (
-          <span key={i}><span className="p">{P}</span>{s.cmd}{'\n'}{s.out ? s.out + '\n' : ''}</span>
+          <span key={i}><span className="text-[#6bf2be]">{P}</span>{s.cmd}{'\n'}{s.out ? s.out + '\n' : ''}</span>
         ))}
-        <span className="p">{P}</span>{cur}<span className="cur" />
+        <span className="text-[#6bf2be]">{P}</span>{cur}<span className="blink inline-block h-4 w-2 bg-[#6bf2be] align-[-3px]" />
       </pre>
     </div>
   )

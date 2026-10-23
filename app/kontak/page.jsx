@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { profile } from '../../data/lab'
 import ContactForm from '../components/ContactForm'
+import PageHead from '../components/PageHead'
+import { wrap, muted } from '../ui'
 
 export const metadata = {
   title: 'Kontak · Linux Lab',
@@ -17,21 +19,22 @@ export default function Kontak() {
 
   return (
     <>
-      <section className="mhead">
-        <div className="wrap">
-          <p className="path"><Link href="/">Beranda</Link> / Kontak</p>
-          <h1>Hubungi saya</h1>
-          <p className="mgoal">Ada pertanyaan tentang lab ini atau butuh bantuan IT Support? Tulis pesan di bawah ini.</p>
-        </div>
-      </section>
-      <main className="wrap contact">
+      <PageHead>
+        <p className={`mb-4 text-sm ${muted}`}><Link href="/" className="hover:text-[#00D68F]">Beranda</Link> / Kontak</p>
+        <h1 className="text-4xl font-bold tracking-tight md:text-5xl">Hubungi saya</h1>
+        <p className={`mt-3 max-w-xl ${muted}`}>Ada pertanyaan tentang lab ini atau butuh bantuan IT Support? Tulis pesan di bawah ini.</p>
+      </PageHead>
+      <main className={`${wrap} grid items-start gap-10 pb-20 md:grid-cols-[1fr_1.2fr]`}>
         <aside>
-          <h2>{profile.name}</h2>
-          <p className="pf-role-d">{profile.role}</p>
+          <h2 className="text-xl font-semibold">{profile.name}</h2>
+          <p className={`mb-5 mt-1 ${muted}`}>{profile.role}</p>
           {rows.length > 0 && (
-            <ul className="crow">
+            <ul className="divide-y divide-slate-200 border-y border-slate-200 dark:divide-white/10 dark:border-white/10">
               {rows.map(([l, t, h]) => (
-                <li key={l}><span>{l}</span><a href={h} target={h.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer">{t}</a></li>
+                <li key={l} className="flex justify-between gap-4 py-3">
+                  <span className={muted}>{l}</span>
+                  <a href={h} target={h.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" className="truncate transition hover:text-[#00D68F]">{t}</a>
+                </li>
               ))}
             </ul>
           )}

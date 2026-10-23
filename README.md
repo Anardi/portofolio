@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Linux Lab Portfolio — Next.js
 
-## Getting Started
+Portofolio IT Support / Linux System Administration dengan modul hands-on, halaman skenario, dan terminal Ubuntu simulasi di browser.
 
-First, run the development server:
+## Jalankan secara lokal
+
+Pastikan Node.js versi yang didukung Next.js tersedia, lalu jalankan:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Buka `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Untuk build produksi:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Terminal simulasi
 
-To learn more about Next.js, take a look at the following resources:
+- Klik **Bash Ubuntu** di header, atau klik **Praktikkan di Bash Ubuntu** pada halaman modul.
+- Terminal memakai `@xterm/xterm` untuk tampilan terminal browser dan `@xterm/addon-fit` untuk menyesuaikan ukuran terminal.
+- Parser perintah terletak di `lib/terminal-simulator.js`. Respons perintah, file, permission, service, firewall, dan sebagian status jaringan adalah data mock di memori browser.
+- Pilih modul dari panel **Konteks modul**. Terminal memuat kondisi awal dan command latihan yang sesuai.
+- Klik **Reset lab** untuk mengembalikan filesystem dan service tiruan ke kondisi awal.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Batasan keamanan:** terminal ini bukan Bash sungguhan dan tidak terhubung ke server, sistem operasi, disk, atau VM. Perintah tidak dieksekusi di server; simulator hanya memproses perintah yang terdaftar dan mengubah state tiruan. Untuk memvalidasi perintah Linux secara nyata, jalankan pada Ubuntu Server VM yang Anda kendalikan.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Personalisasi
 
-## Deploy on Vercel
+- Profil: `data/lab.js` → objek `profile`.
+- Kompetensi, metrik, sertifikasi, rekomendasi, dan resume: `data/portfolio.js`.
+- Modul dan perintah langkah: `data/lab.js`.
+- Tampilan dan perilaku terminal: `app/components/TerminalWorkbench.jsx` serta `lib/terminal-simulator.js`.
+- Resume: letakkan PDF di `public/resume.pdf`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Sertifikasi dan rekomendasi sengaja dikosongkan sampai ada data asli yang bisa diverifikasi.
