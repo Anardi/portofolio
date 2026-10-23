@@ -499,7 +499,7 @@ export const profile = {
   role: "IT Support · Networking · Linux Administration",
   github: "https://github.com/Anardi/",
   linkedin: "https://www.linkedin.com/in/bagas-anardi/",
-  email: "bagasaanardi@gmail.com",
+  email: "anardibusiness@gmail.com",
   phone: "+62 851-7822-9616",
 };
 
