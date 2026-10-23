@@ -2,25 +2,7 @@
   "name": "linux-lab-portfolio",
   "version": "1.0.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "@xterm/addon-fit": "^0.11.0",
-    "@xterm/xterm": "^6.0.0",
-    "next": "^16.0.0",
-    "next-themes": "^0.4.6",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
-  },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4.0.0",
-    "@types/node": "26.6.5",
-    "@types/react": "19.3.0",
-    "postcss": "^8.4.0",
-    "tailwindcss": "^4.0.0",
-    "typescript": "7.0.2"
-  }
+  "scripts": { "dev": "next dev", "build": "next build", "start": "next start" },
+  "dependencies": { "@xterm/addon-fit": "^0.11.0", "@xterm/xterm": "^6.0.0", "next": "^16.0.0", "next-themes": "^0.4.6", "react": "^19.0.0", "react-dom": "^19.0.0" },
+  "devDependencies": { "@tailwindcss/postcss": "^4.0.0", "postcss": "^8.4.0", "tailwindcss": "^4.0.0" }
 }

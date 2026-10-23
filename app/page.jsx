@@ -57,7 +57,7 @@ export default function Home() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-[#00D68F]/50 bg-[#00D68F]/10 px-5 font-mono text-xs text-[#6bf2be] shadow-[0_0_28px_-12px_rgba(0,214,143,.65)] transition hover:bg-[#00D68F]/15 hover:shadow-[0_0_30px_-8px_rgba(0,214,143,.45)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#00D68F]" href="/#modul">Explore Modules <span aria-hidden="true">↘</span></Link>
               <Link className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-white/15 px-5 font-mono text-xs text-slate-200 transition hover:border-white/35 hover:bg-white/[.04] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#00D68F]" href="/terminal"><span className="text-[#00D68F]">$</span> Open Bash Ubuntu ↗</Link>
-              <a className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md px-3 font-mono text-xs text-slate-500 transition hover:text-[#6bf2be]" href={resume} target="_blank" rel="noopener noreferrer">view_resume.pdf ↗</a>
+              <Link className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md px-3 font-mono text-xs text-slate-500 transition hover:text-[#6bf2be]" href="/resume">view_resume.profile ↗</Link>
             </div>
           </div>
 

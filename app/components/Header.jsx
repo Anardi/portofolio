@@ -54,8 +54,8 @@ export default function Header() {
           </Link>
           <nav className="hidden items-center gap-7 md:flex" aria-label="Navigasi utama">
             <Link href="/#tentang" className={link}>01 About</Link>
-            <Link href="/#kompetensi" className={link}>02 Stack</Link>
-            <Link href="/#modul" className={link}>03 Projects</Link>
+            <Link href="/blog" className={link}>02 Blog</Link>
+            <Link href="/#modul" className={link}>03 Modul</Link>
             <Link href="/#kontak" className={link}>04 Contact</Link>
             <Link href="/terminal" className="inline-flex h-9 items-center gap-2 rounded-md border border-[#00D68F]/50 px-3.5 font-mono text-[10px] text-[#6bf2be] transition hover:bg-[#00D68F]/10 hover:shadow-[0_0_22px_-8px_rgba(0,214,143,.8)]">
               <span className="text-[#00D68F]">$</span> Bash Ubuntu ↗
@@ -83,11 +83,11 @@ export default function Header() {
           </div>
           <nav className="flex flex-col gap-6" aria-label="Menu seluler">
             <Link href="/#tentang" onClick={close} className={link}>01 About</Link>
-            <Link href="/#kompetensi" onClick={close} className={link}>02 Stack</Link>
-            <Link href="/#modul" onClick={close} className={link}>03 Projects</Link>
+            <Link href="/blog" onClick={close} className={link}>02 Blog</Link>
+            <Link href="/#modul" onClick={close} className={link}>03 Modul</Link>
             <Link href="/#kontak" onClick={close} className={link}>04 Contact</Link>
             <Link href="/terminal" onClick={close} className="inline-flex w-fit items-center gap-2 rounded-md border border-[#00D68F]/50 px-3.5 py-2.5 font-mono text-xs text-[#6bf2be]">$ Bash Ubuntu ↗</Link>
-            <a href={resume} target="_blank" rel="noopener noreferrer" onClick={close} className={link}>Resume ↗</a>
+            <a href={resume} download="Bagas_Anardi_Surya_Wijaya_CV.pdf" onClick={close} className={link}>Download CV PDF ↓</a>
           </nav>
           <div className="mt-auto flex items-center justify-between border-t border-white/10 pt-5"><span className="font-mono text-xs text-slate-400">Theme preference</span><ThemeButton /></div>
         </aside>

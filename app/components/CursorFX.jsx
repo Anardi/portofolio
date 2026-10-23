@@ -22,7 +22,7 @@ export default function CursorFX() {
   }, [])
 
   return (
-    <div ref={root} aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10">
+    <div ref={root} aria-hidden="true" className="cursor-fx pointer-events-none fixed inset-0 -z-10">
       <div className="grid-bg absolute inset-0" />
       <div className="grid-hot absolute inset-0" />
       <div className="cursor-glow absolute inset-0" />
