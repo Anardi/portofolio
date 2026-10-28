@@ -495,7 +495,7 @@ export const modules = [
 ];
 
 export const profile = {
-  name: "Bagas Anardi Surya Wijaya",
+  name: "Bagas Anardi",
   role: "IT Support · Networking · Linux Administration",
   github: "https://github.com/Anardi/",
   linkedin: "https://www.linkedin.com/in/bagas-anardi/",
