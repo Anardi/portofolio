@@ -12,11 +12,6 @@ export const metadata = {
 
 export default function Kontak() {
   const rows = [
-    profile.phone && [
-      "Telepon",
-      profile.phone,
-      `tel:${profile.phone.replace(/[^\d+]/g, "")}`,
-    ],
     profile.github && [
       "GitHub",
       profile.github.replace(/^https?:\/\//, ""),
