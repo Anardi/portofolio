@@ -247,7 +247,12 @@ export async function POST(request) {
     );
   }
 
-  // Never allow test keys to send real email.
+  const captchaValid = await verifyTurnstile(
+    turnstileToken,
+    request,
+    turnstileSecret,
+    testMode,
+  );
   const previewMode = process.env.CONTACT_PREVIEW_MODE === "true";
 
   if (testMode || previewMode) {
@@ -256,13 +261,6 @@ export async function POST(request) {
       preview: true,
     });
   }
-
-  const captchaValid = await verifyTurnstile(
-    turnstileToken,
-    request,
-    turnstileSecret,
-    testMode,
-  );
 
   if (!captchaValid) {
     return json(
