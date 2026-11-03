@@ -20,7 +20,7 @@
   "previews": {
     "vars": {
       "CONTACT_ENABLED": "false",
-      "TURNSTILE_SITE_KEY": "0x4AAAAAAFxbkLLsGKFQZOEt",
+      "TURNSTILE_SITE_KEY": "1x00000000000000000000AA",
       "TURNSTILE_TEST_MODE": "true",
     },
   },
