@@ -124,6 +124,16 @@ export default function ContactForm({ to, siteKey }) {
   }
 
   const messages = {
+    preview: {
+      tone: "ok",
+      text: "Verifikasi berhasil. Ini adalah Preview: email tidak dikirim sungguhan.",
+    },
+
+    sent: {
+      tone: "ok",
+      text: "Pesan berhasil diterima oleh layanan email. Terima kasih sudah menghubungi saya.",
+    },
+
     contactDisabled: {
       tone: "warn",
       text: "Form kontak sedang dinonaktifkan sementara. Silakan coba kembali nanti.",
@@ -136,12 +146,32 @@ export default function ContactForm({ to, siteKey }) {
 
     turnstileNotConfigured: {
       tone: "warn",
-      text: "Konfigurasi verifikasi keamanan belum tersedia. Silakan coba kembali nanti.",
+      text: "Konfigurasi verifikasi keamanan belum tersedia.",
     },
 
     environmentError: {
       tone: "error",
-      text: "Terjadi kesalahan konfigurasi pada layanan kontak. Silakan coba kembali nanti.",
+      text: "Terjadi kesalahan konfigurasi pada layanan kontak.",
+    },
+
+    rateLimited: {
+      tone: "warn",
+      text: "Terlalu banyak percobaan. Silakan coba kembali nanti.",
+    },
+
+    captchaFailed: {
+      tone: "error",
+      text: "Verifikasi keamanan gagal. Silakan ulangi verifikasi.",
+    },
+
+    captchaUnavailable: {
+      tone: "error",
+      text: "Verifikasi keamanan tidak dapat dimuat. Muat ulang halaman.",
+    },
+
+    error: {
+      tone: "error",
+      text: "Pesan belum berhasil diproses. Silakan coba kembali.",
     },
   };
 

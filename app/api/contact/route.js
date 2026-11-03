@@ -93,10 +93,7 @@ function isSameOrigin(request) {
 }
 
 async function verifyTurnstile(token, request, secret, testMode) {
-  const hostname =
-    typeof result.hostname === "string" ? result.hostname.toLowerCase() : "";
-
-  if (!testMode && !getAllowedTurnstileHostnames().has(hostname)) {
+  if (typeof token !== "string" || token.length === 0 || token.length > 2048) {
     return false;
   }
 
@@ -126,15 +123,14 @@ async function verifyTurnstile(token, request, secret, testMode) {
 
     if (result.success !== true) return false;
 
-    // Cloudflare test keys return action "test".
-    // The real Production widget uses action "contact".
     const expectedAction = testMode ? "test" : "contact";
 
     if (result.action !== expectedAction) return false;
 
-    // Test keys use a test hostname, so only enforce
-    // the production hostname check for real keys.
-    if (!testMode && !ALLOWED_TURNSTILE_HOSTNAMES.has(result.hostname)) {
+    const hostname =
+      typeof result.hostname === "string" ? result.hostname.toLowerCase() : "";
+
+    if (!testMode && !getAllowedTurnstileHostnames().has(hostname)) {
       return false;
     }
 
