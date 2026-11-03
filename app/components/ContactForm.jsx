@@ -99,8 +99,14 @@ export default function ContactForm({ to, siteKey }) {
       } else if (response.ok && result.ok) {
         form.reset();
         setState("sent");
-      } else if (response.status === 503) {
-        setState("notConfigured");
+      } else if (result.code === "contact_disabled") {
+        setState("contactDisabled");
+      } else if (result.code === "email_service_not_configured") {
+        setState("emailNotConfigured");
+      } else if (result.code === "turnstile_not_configured") {
+        setState("turnstileNotConfigured");
+      } else if (result.code === "invalid_environment_configuration") {
+        setState("environmentError");
       } else if (response.status === 429) {
         setState("rateLimited");
       } else if (
@@ -118,41 +124,24 @@ export default function ContactForm({ to, siteKey }) {
   }
 
   const messages = {
-    preview: {
-      tone: "ok",
-      text: "Verifikasi Turnstile berhasil. Ini adalah Preview: email tidak dikirim sungguhan.",
-    },
-    sent: {
-      tone: "ok",
-      text: "Pesan berhasil diteruskan ke layanan email. Terima kasih sudah menghubungi saya.",
-    },
-    notConfigured: {
+    contactDisabled: {
       tone: "warn",
-      text: "Pengiriman email belum diaktifkan atau konfigurasi server belum lengkap.",
+      text: "Form kontak sedang dinonaktifkan sementara. Silakan coba kembali nanti.",
     },
-    rateLimited: {
+
+    emailNotConfigured: {
       tone: "warn",
-      text: "Terlalu banyak percobaan. Silakan coba kembali beberapa saat lagi.",
+      text: "Layanan pengiriman email belum dikonfigurasi. Pesan belum dapat dikirim.",
     },
-    captchaRequired: {
+
+    turnstileNotConfigured: {
       tone: "warn",
-      text: "Selesaikan verifikasi keamanan sebelum mengirim pesan.",
+      text: "Konfigurasi verifikasi keamanan belum tersedia. Silakan coba kembali nanti.",
     },
-    captchaExpired: {
-      tone: "warn",
-      text: "Verifikasi kedaluwarsa. Silakan lakukan verifikasi kembali.",
-    },
-    captchaUnavailable: {
+
+    environmentError: {
       tone: "error",
-      text: "Verifikasi keamanan tidak dapat dimuat. Muat ulang halaman.",
-    },
-    captchaFailed: {
-      tone: "error",
-      text: "Verifikasi keamanan gagal. Silakan ulangi verifikasi.",
-    },
-    error: {
-      tone: "error",
-      text: "Pesan belum berhasil diproses. Periksa koneksi atau coba kembali.",
+      text: "Terjadi kesalahan konfigurasi pada layanan kontak. Silakan coba kembali nanti.",
     },
   };
 
