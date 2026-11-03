@@ -4,7 +4,10 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const MAX_BODY_BYTES = 12 * 1024;
-const ALLOWED_PRODUCTION_HOSTNAMES = new Set(["dhilabs.my.id"]);
+const ALLOWED_PRODUCTION_HOSTNAMES = new Set([
+  "dhilabs.my.id",
+  "development-portofolio.bagasadriant.workers.dev",
+]);
 
 function json(body, status = 200) {
   return Response.json(body, {
@@ -124,7 +127,7 @@ async function verifyTurnstile(token, request, secret, testMode) {
 
     // Test keys use a test hostname, so only enforce
     // the production hostname check for real keys.
-    if (!testMode && !ALLOWED_PRODUCTION_HOSTNAMES.has(result.hostname)) {
+    if (!testMode && !ALLOWED_TURNSTILE_HOSTNAMES.has(result.hostname)) {
       return false;
     }
 
