@@ -1,5 +1,3 @@
-import { profile } from "../../../data/lab";
-
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
@@ -297,7 +295,7 @@ export async function POST(request) {
 
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.CONTACT_FROM_EMAIL;
-  const to = process.env.CONTACT_TO_EMAIL || profile.email;
+  const to = process.env.CONTACT_TO_EMAIL;
 
   if (!apiKey || !from || !to) {
     return json(
