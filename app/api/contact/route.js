@@ -4,7 +4,7 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const MAX_BODY_BYTES = 12 * 1024;
-const ALLOWED_PRODUCTION_HOSTNAMES = new Set([
+const ALLOWED_TURNSTILE_HOSTNAMES = new Set([
   "dhilabs.my.id",
   "development-portofolio.bagasadriant.workers.dev",
 ]);
