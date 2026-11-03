@@ -3,7 +3,7 @@ import { profile } from "../../data/lab";
 import ContactForm from "../components/ContactForm";
 import PageHead from "../components/PageHead";
 import { wrap, muted } from "../ui";
-import nodemailer from "nodemailer";
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Kontak · Linux Lab",
@@ -71,7 +71,10 @@ export default function Kontak() {
             </ul>
           )}
         </aside>
-        <ContactForm to={profile.email} />
+        <ContactForm
+          to={profile.email}
+          siteKey={process.env.TURNSTILE_SITE_KEY || ""}
+        />
       </main>
     </>
   );
