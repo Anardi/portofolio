@@ -15,8 +15,13 @@
     },
   ],
   "images": {
-    // Enable image optimization
-    // see https://opennext.js.org/cloudflare/howtos/image
     "binding": "IMAGES",
+  },
+  "previews": {
+    "vars": {
+      "CONTACT_ENABLED": "false",
+      "TURNSTILE_SITE_KEY": "0x4AAAAAAFxbkLLsGKFQZOEt",
+      "TURNSTILE_TEST_MODE": "true",
+    },
   },
 }
