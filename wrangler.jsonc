@@ -17,11 +17,15 @@
   "images": {
     "binding": "IMAGES",
   },
+  "vars": {
+    "TURNSTILE_ALLOWED_HOSTNAMES": "dhilabs.my.id",
+  },
   "previews": {
     "vars": {
       "CONTACT_ENABLED": "false",
       "TURNSTILE_SITE_KEY": "0x4AAAAAAFxbkLLsGKFQZOEt",
       "TURNSTILE_TEST_MODE": "false",
+      "TURNSTILE_ALLOWED_HOSTNAMES": "development-portofolio.bagasadriant.workers.dev",
     },
   },
 }

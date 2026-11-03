@@ -4,10 +4,14 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const MAX_BODY_BYTES = 12 * 1024;
-const ALLOWED_TURNSTILE_HOSTNAMES = new Set([
-  "dhilabs.my.id",
-  "development-portofolio.bagasadriant.workers.dev",
-]);
+function getAllowedTurnstileHostnames() {
+  return new Set(
+    (process.env.TURNSTILE_ALLOWED_HOSTNAMES || "")
+      .split(",")
+      .map((hostname) => hostname.trim().toLowerCase())
+      .filter(Boolean),
+  );
+}
 
 function json(body, status = 200) {
   return Response.json(body, {
@@ -89,7 +93,10 @@ function isSameOrigin(request) {
 }
 
 async function verifyTurnstile(token, request, secret, testMode) {
-  if (typeof token !== "string" || token.length === 0 || token.length > 2048) {
+  const hostname =
+    typeof result.hostname === "string" ? result.hostname.toLowerCase() : "";
+
+  if (!testMode && !getAllowedTurnstileHostnames().has(hostname)) {
     return false;
   }
 
