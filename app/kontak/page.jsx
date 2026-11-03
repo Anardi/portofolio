@@ -12,7 +12,6 @@ export const metadata = {
 
 export default function Kontak() {
   const rows = [
-    profile.email && ["Email", profile.email, `mailto:${profile.email}`],
     profile.phone && [
       "Telepon",
       profile.phone,
@@ -71,10 +70,7 @@ export default function Kontak() {
             </ul>
           )}
         </aside>
-        <ContactForm
-          to={profile.email}
-          siteKey={process.env.TURNSTILE_SITE_KEY || ""}
-        />
+        <ContactForm siteKey={process.env.TURNSTILE_SITE_KEY || ""} />
       </main>
     </>
   );

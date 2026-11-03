@@ -4,7 +4,7 @@ import Script from "next/script";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { btnPri, field } from "../ui";
 
-export default function ContactForm({ to, siteKey }) {
+export default function ContactForm({ siteKey }) {
   const [state, setState] = useState("idle");
   const [turnstileToken, setTurnstileToken] = useState("");
   const widgetRef = useRef(null);
@@ -286,19 +286,6 @@ export default function ContactForm({ to, siteKey }) {
             className={`rounded-r-lg border-l-4 px-3 py-3 text-sm ${noticeStyle}`}
           >
             <p>{message.text}</p>
-
-            {(state === "error" || state === "notConfigured") && to && (
-              <p className="mt-2">
-                Alternatif:{" "}
-                <a
-                  className="font-semibold underline underline-offset-2"
-                  href={`mailto:${to}`}
-                >
-                  kirim langsung ke {to}
-                </a>
-                .
-              </p>
-            )}
           </div>
         )}
       </form>

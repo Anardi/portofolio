@@ -23,6 +23,7 @@
   "previews": {
     "vars": {
       "CONTACT_ENABLED": "false",
+      "CONTACT_PREVIEW_MODE": "true",
       "TURNSTILE_SITE_KEY": "0x4AAAAAAFxbkLLsGKFQZOEt",
       "TURNSTILE_TEST_MODE": "false",
       "TURNSTILE_ALLOWED_HOSTNAMES": "development-portofolio.bagasadriant.workers.dev",

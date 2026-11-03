@@ -250,14 +250,13 @@ export async function POST(request) {
   }
 
   // Never allow test keys to send real email.
-  if (testMode && contactEnabled) {
-    return json(
-      {
-        ok: false,
-        code: "invalid_environment_configuration",
-      },
-      503,
-    );
+  const previewMode = process.env.CONTACT_PREVIEW_MODE === "true";
+
+  if (testMode || previewMode) {
+    return json({
+      ok: true,
+      preview: true,
+    });
   }
 
   const captchaValid = await verifyTurnstile(
