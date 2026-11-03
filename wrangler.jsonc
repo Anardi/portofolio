@@ -2,6 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "main": ".open-next/worker.js",
   "name": "portofolio",
+  "keep_vars": true,
   "compatibility_date": "2026-10-28",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {
@@ -15,8 +16,18 @@
     },
   ],
   "images": {
-    // Enable image optimization
-    // see https://opennext.js.org/cloudflare/howtos/image
     "binding": "IMAGES",
+  },
+  "vars": {
+    "TURNSTILE_ALLOWED_HOSTNAMES": "dhilabs.my.id",
+  },
+  "previews": {
+    "vars": {
+      "CONTACT_ENABLED": "false",
+      "CONTACT_PREVIEW_MODE": "true",
+      "TURNSTILE_SITE_KEY": "0x4AAAAAAFxbkLLsGKFQZOEt",
+      "TURNSTILE_TEST_MODE": "false",
+      "TURNSTILE_ALLOWED_HOSTNAMES": "development-portofolio.bagasadriant.workers.dev",
+    },
   },
 }

@@ -495,12 +495,11 @@ export const modules = [
 ];
 
 export const profile = {
-  name: "Bagas Anardi Surya Wijaya",
+  name: "Bagas Anardi",
   role: "IT Support · Networking · Linux Administration",
   github: "https://github.com/Anardi/",
   linkedin: "https://www.linkedin.com/in/bagas-anardi/",
-  email: "anardibusiness@gmail.com",
-  phone: "+62 851-7822-9616",
+  email: "hello@dhilabs.my.id",
 };
 
 export const skills = {
